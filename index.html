@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fff6c7" />
+  <meta name="description" content="Un detalle lleno de flores amarillas para mi angelita hermosa." />
+  <title>Para mi angelita hermosa</title>
+  <style>
+    :root {
+      --sky-top: #fff9d8;
+      --sky-bottom: #ffd96a;
+      --sunflower: #ffc928;
+      --sunflower-dark: #ed9d00;
+      --rose: #ffd62e;
+      --rose-light: #fff48a;
+      --rose-shadow: #e5a900;
+      --green: #3f8d38;
+      --green-dark: #24622d;
+      --brown: #70401e;
+      --ink: #5d3a18;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { min-height: 100%; }
+
+    body {
+      margin: 0;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      min-height: 100svh;
+      color: var(--ink);
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      background:
+        radial-gradient(circle at 15% 18%, rgba(255,255,255,.9) 0 2px, transparent 3px),
+        radial-gradient(circle at 84% 24%, rgba(255,255,255,.75) 0 3px, transparent 4px),
+        linear-gradient(180deg, var(--sky-top), var(--sky-bottom));
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .2;
+      background-image: radial-gradient(#cf8800 0.7px, transparent 0.7px);
+      background-size: 18px 18px;
+    }
+
+    .card {
+      position: relative;
+      width: min(92vw, 760px);
+      min-height: min(90svh, 720px);
+      padding: clamp(24px, 5vw, 48px) clamp(18px, 5vw, 48px) 24px;
+      overflow: hidden;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,.8);
+      border-radius: 34px;
+      background: rgba(255, 255, 255, .55);
+      box-shadow: 0 24px 70px rgba(116, 74, 0, .22), inset 0 1px 0 #fff;
+      backdrop-filter: blur(9px);
+      animation: appear 1s cubic-bezier(.2,.9,.2,1) both;
+    }
+
+    .date {
+      margin: 0 0 8px;
+      font-size: clamp(.72rem, 2vw, .9rem);
+      font-weight: 800;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: #a36a00;
+    }
+
+    h1 {
+      position: relative;
+      z-index: 4;
+      max-width: 630px;
+      margin: 0 auto;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2rem, 6.8vw, 4.1rem);
+      line-height: .98;
+      letter-spacing: -.04em;
+      text-wrap: balance;
+      color: #704018;
+      text-shadow: 0 2px 0 rgba(255,255,255,.8);
+    }
+
+    .subtitle {
+      position: relative;
+      z-index: 4;
+      margin: 13px auto 0;
+      max-width: 470px;
+      font-size: clamp(.9rem, 2.7vw, 1.08rem);
+      line-height: 1.5;
+      color: #87591e;
+    }
+
+    .garden {
+      position: absolute;
+      inset: auto 0 0;
+      height: 58%;
+    }
+
+    .ground {
+      position: absolute;
+      inset: auto -10% -17% -10%;
+      height: 42%;
+      border-radius: 50% 50% 0 0;
+      background: linear-gradient(180deg, #7dbb48, #438336);
+      box-shadow: inset 0 10px 20px rgba(255,255,255,.18);
+    }
+
+    .flower {
+      position: absolute;
+      bottom: 13%;
+      transform-origin: 50% 100%;
+      animation: sway 3.8s ease-in-out infinite alternate;
+    }
+
+    .sunflower { left: 11%; width: clamp(155px, 31vw, 245px); height: 88%; }
+    .rose { right: 10%; width: clamp(130px, 27vw, 205px); height: 76%; animation-delay: -.9s; }
+
+    .stem {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: 13px;
+      height: 65%;
+      transform: translateX(-50%);
+      border-radius: 10px;
+      background: linear-gradient(90deg, var(--green-dark), #62a842 55%, var(--green-dark));
+      box-shadow: 3px 0 4px rgba(45,85,31,.2);
+    }
+
+    .leaf {
+      position: absolute;
+      width: 64px;
+      height: 31px;
+      border-radius: 90% 5% 90% 5%;
+      background: linear-gradient(135deg, #70b84a, var(--green-dark));
+      box-shadow: inset 0 2px 4px rgba(255,255,255,.25);
+    }
+
+    .leaf::after {
+      content: "";
+      position: absolute;
+      width: 80%;
+      height: 2px;
+      left: 8%;
+      top: 52%;
+      background: rgba(25,91,38,.45);
+      transform: rotate(16deg);
+    }
+
+    .leaf.left { left: 49%; bottom: 24%; transform: translateX(-100%) rotate(12deg); }
+    .leaf.right { left: 52%; bottom: 39%; transform: rotate(76deg) scale(.88); }
+
+    .sunflower-head {
+      position: absolute;
+      left: 50%;
+      top: 1%;
+      width: 76%;
+      aspect-ratio: 1;
+      transform: translateX(-50%);
+      animation: spin 18s linear infinite;
+    }
+
+    .petal {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 34%;
+      height: 15%;
+      margin-left: -17%;
+      margin-top: -7.5%;
+      border-radius: 100% 15% 100% 15%;
+      background: linear-gradient(90deg, var(--sunflower-dark), var(--sunflower) 55%, #ffe66b);
+      box-shadow: inset 0 -3px 5px rgba(187,112,0,.22), 0 2px 3px rgba(128,77,0,.14);
+      transform: rotate(calc(var(--i) * 22.5deg)) translateX(88%);
+    }
+
+    .center {
+      position: absolute;
+      z-index: 2;
+      inset: 28%;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, #e8ad43 0 2px, transparent 2.4px) 0 0 / 9px 9px,
+        radial-gradient(circle at 38% 35%, #996026, var(--brown) 66%, #4e2916);
+      border: 5px solid #c78622;
+      box-shadow: 0 4px 10px rgba(72,39,13,.35), inset 0 0 12px rgba(54,25,5,.4);
+    }
+
+    .rose-head {
+      position: absolute;
+      left: 50%;
+      top: 4%;
+      width: 76%;
+      aspect-ratio: 1;
+      transform: translateX(-50%);
+      filter: drop-shadow(0 7px 5px rgba(139,86,0,.2));
+      animation: bloom 3s ease-in-out infinite alternate;
+    }
+
+    .rose-petal {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 56%;
+      height: 46%;
+      margin: -23% 0 0 -28%;
+      border-radius: 55% 55% 45% 45%;
+      transform-origin: 50% 85%;
+      background: radial-gradient(circle at 48% 18%, var(--rose-light), var(--rose) 48%, var(--rose-shadow));
+      border: 1px solid rgba(218,154,0,.25);
+    }
+
+    .rose-petal:nth-child(1) { transform: translateY(-35%) scale(.75); }
+    .rose-petal:nth-child(2) { transform: rotate(72deg) translateY(-32%) scale(.82); }
+    .rose-petal:nth-child(3) { transform: rotate(144deg) translateY(-32%) scale(.86); }
+    .rose-petal:nth-child(4) { transform: rotate(216deg) translateY(-32%) scale(.86); }
+    .rose-petal:nth-child(5) { transform: rotate(288deg) translateY(-32%) scale(.82); }
+    .rose-petal:nth-child(6) { transform: scale(.56); border-radius: 50% 50% 45% 45%; }
+    .rose-petal:nth-child(7) { transform: rotate(35deg) scale(.34); background: #ffe853; }
+
+    .heart {
+      position: absolute;
+      z-index: 5;
+      bottom: -30px;
+      font-size: clamp(15px, 3vw, 24px);
+      color: #ef9f00;
+      opacity: 0;
+      animation: float-up var(--speed) ease-in infinite;
+      animation-delay: var(--delay);
+      filter: drop-shadow(0 2px 2px rgba(255,255,255,.8));
+    }
+
+    .signature {
+      position: absolute;
+      z-index: 7;
+      left: 50%;
+      bottom: 15px;
+      margin: 0;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      font-family: Georgia, serif;
+      font-size: clamp(.72rem, 2.2vw, .9rem);
+      color: rgba(255,255,255,.92);
+      text-shadow: 0 1px 3px #3d6d29;
+    }
+
+    @keyframes appear {
+      from { opacity: 0; transform: translateY(24px) scale(.97); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes sway {
+      from { transform: rotate(-2.5deg); }
+      to { transform: rotate(2.5deg); }
+    }
+
+    @keyframes spin {
+      to { transform: translateX(-50%) rotate(360deg); }
+    }
+
+    @keyframes bloom {
+      from { transform: translateX(-50%) scale(.95) rotate(-2deg); }
+      to { transform: translateX(-50%) scale(1.04) rotate(2deg); }
+    }
+
+    @keyframes float-up {
+      0% { transform: translateY(0) rotate(0); opacity: 0; }
+      14% { opacity: .78; }
+      100% { transform: translateY(-72svh) rotate(25deg); opacity: 0; }
+    }
+
+    @media (max-height: 650px) {
+      .card { min-height: 94svh; padding-top: 18px; }
+      .garden { height: 56%; }
+      .subtitle { margin-top: 7px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="card" aria-label="Dedicatoria con una rosa amarilla y un girasol">
+    <p class="date">21 de septiembre · flores amarillas</p>
+    <h1>Mi angelita hermosa,<br />te amo mucho</h1>
+    <p class="subtitle">Que estas flores amarillas te recuerden lo especial que eres para mí. 💛</p>
+
+    <section class="garden" aria-hidden="true">
+      <div class="ground"></div>
+
+      <div class="flower sunflower">
+        <div class="stem"></div>
+        <div class="leaf left"></div>
+        <div class="leaf right"></div>
+        <div class="sunflower-head">
+          <span class="petal" style="--i:0"></span><span class="petal" style="--i:1"></span>
+          <span class="petal" style="--i:2"></span><span class="petal" style="--i:3"></span>
+          <span class="petal" style="--i:4"></span><span class="petal" style="--i:5"></span>
+          <span class="petal" style="--i:6"></span><span class="petal" style="--i:7"></span>
+          <span class="petal" style="--i:8"></span><span class="petal" style="--i:9"></span>
+          <span class="petal" style="--i:10"></span><span class="petal" style="--i:11"></span>
+          <span class="petal" style="--i:12"></span><span class="petal" style="--i:13"></span>
+          <span class="petal" style="--i:14"></span><span class="petal" style="--i:15"></span>
+          <span class="center"></span>
+        </div>
+      </div>
+
+      <div class="flower rose">
+        <div class="stem"></div>
+        <div class="leaf left"></div>
+        <div class="leaf right"></div>
+        <div class="rose-head">
+          <span class="rose-petal"></span><span class="rose-petal"></span>
+          <span class="rose-petal"></span><span class="rose-petal"></span>
+          <span class="rose-petal"></span><span class="rose-petal"></span>
+          <span class="rose-petal"></span>
+        </div>
+      </div>
+    </section>
+
+    <span class="heart" style="left:9%;--speed:7s;--delay:-1s">♥</span>
+    <span class="heart" style="left:28%;--speed:9s;--delay:-5s">♥</span>
+    <span class="heart" style="left:53%;--speed:8s;--delay:-3s">♥</span>
+    <span class="heart" style="left:74%;--speed:10s;--delay:-7s">♥</span>
+    <span class="heart" style="left:91%;--speed:7.5s;--delay:-4s">♥</span>
+    <p class="signature">Hecho con todo mi amor para ti ✨</p>
+  </main>
+</body>
+</html>
