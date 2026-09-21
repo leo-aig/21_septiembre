@@ -219,14 +219,14 @@
       left: 13%;
       width: clamp(155px, 31vw, 245px);
       height: 88%;
-      animation: sway 3.8s ease-in-out infinite alternate, gather-sunflower 1.6s 10.7s cubic-bezier(.2,.85,.25,1) forwards;
+      animation: sway 3.8s ease-in-out infinite alternate;
     }
 
     .rose {
       right: 11%;
       width: clamp(150px, 29vw, 220px);
       height: 78%;
-      animation: sway 3.8s -.9s ease-in-out infinite alternate, gather-roses 1.6s 10.7s cubic-bezier(.2,.85,.25,1) forwards;
+      animation: sway 3.8s -.9s ease-in-out infinite alternate;
     }
 
     .stem {
@@ -283,7 +283,7 @@
       opacity: 0;
       scale: .15;
       filter: drop-shadow(0 10px 12px rgba(0,0,0,.5));
-      animation: assemble-head .9s 2.25s cubic-bezier(.2,1.25,.3,1) forwards, spin 30s 4.75s linear infinite;
+      animation: assemble-head .9s 2.25s cubic-bezier(.2,1.25,.3,1) forwards, spin 30s 4.75s linear infinite, sunflower-aura 2.8s 4.75s ease-in-out infinite alternate;
     }
 
     .petal {
@@ -467,6 +467,52 @@
       animation: tulip-open 1s calc(var(--start) + 1s) cubic-bezier(.2,1.3,.3,1) forwards;
     }
 
+    .tulip-bloom::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: -18%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,220,42,.6), rgba(255,184,0,.2) 48%, transparent 72%);
+      filter: blur(8px);
+      opacity: 0;
+      animation: bloom-aura 2.5s calc(var(--start) + 2s) ease-in-out infinite alternate;
+    }
+
+    .comet-field {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .comet {
+      position: absolute;
+      left: var(--left);
+      top: var(--top);
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      opacity: 0;
+      background: #fff5ae;
+      box-shadow: 0 0 7px #ffe04b, 0 0 14px rgba(255,190,0,.75);
+      animation: comet-flight 5.5s var(--delay) ease-in-out infinite;
+    }
+
+    .comet::after {
+      content: "";
+      position: absolute;
+      right: 3px;
+      top: 1px;
+      width: 36px;
+      height: 2px;
+      transform-origin: right center;
+      transform: rotate(25deg);
+      background: linear-gradient(90deg, transparent, rgba(255,220,62,.75));
+      filter: blur(.5px);
+    }
+
     .tulip-petal {
       position: absolute;
       bottom: 0;
@@ -572,6 +618,23 @@
       to { transform: translate(-50%, -50%) rotate(-360deg); }
     }
 
+    @keyframes sunflower-aura {
+      from { filter: drop-shadow(0 8px 10px rgba(0,0,0,.55)) drop-shadow(0 0 4px rgba(255,202,0,.25)); }
+      to { filter: drop-shadow(0 10px 12px rgba(0,0,0,.5)) drop-shadow(0 0 18px rgba(255,220,41,.92)); }
+    }
+
+    @keyframes bloom-aura {
+      from { opacity: .25; scale: .88; }
+      to { opacity: .9; scale: 1.18; }
+    }
+
+    @keyframes comet-flight {
+      0% { opacity: 0; transform: translate(-70px, -45px); }
+      12% { opacity: 1; }
+      62% { opacity: .9; }
+      100% { opacity: 0; transform: translate(190px, 115px); }
+    }
+
     @keyframes unwrap {
       from { opacity: 0; transform: translateX(-50%) translateY(35px) scale(.85); }
       to { opacity: .92; transform: translateX(-50%) translateY(0) scale(1); }
@@ -650,8 +713,14 @@
 
     <section class="garden" aria-hidden="true">
       <div class="ground"></div>
-      <div class="bouquet-paper"></div>
-      <div class="bouquet-knot"></div>
+      <div class="comet-field">
+        <span class="comet" style="--left:4%;--top:12%;--delay:10.8s"></span>
+        <span class="comet" style="--left:31%;--top:5%;--delay:12.5s"></span>
+        <span class="comet" style="--left:58%;--top:17%;--delay:11.6s"></span>
+        <span class="comet" style="--left:76%;--top:7%;--delay:13.4s"></span>
+        <span class="comet" style="--left:13%;--top:43%;--delay:14.2s"></span>
+        <span class="comet" style="--left:67%;--top:48%;--delay:12.1s"></span>
+      </div>
 
       <div class="flower sunflower">
         <div class="stem"></div>
