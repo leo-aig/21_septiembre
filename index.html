@@ -132,6 +132,8 @@
       border-radius: 10px;
       background: linear-gradient(90deg, var(--green-dark), #62a842 55%, var(--green-dark));
       box-shadow: 3px 0 4px rgba(45,85,31,.2);
+      transform-origin: 50% 100%;
+      animation: grow-stem 1.25s .2s cubic-bezier(.2,.8,.2,1) both;
     }
 
     .leaf {
@@ -141,6 +143,9 @@
       border-radius: 90% 5% 90% 5%;
       background: linear-gradient(135deg, #70b84a, var(--green-dark));
       box-shadow: inset 0 2px 4px rgba(255,255,255,.25);
+      opacity: 0;
+      scale: 0;
+      animation: grow-leaf .65s 1s cubic-bezier(.2,1.4,.3,1) forwards;
     }
 
     .leaf::after {
@@ -155,7 +160,7 @@
     }
 
     .leaf.left { left: 49%; bottom: 24%; transform: translateX(-100%) rotate(12deg); }
-    .leaf.right { left: 52%; bottom: 39%; transform: rotate(76deg) scale(.88); }
+    .leaf.right { left: 52%; bottom: 39%; transform: rotate(76deg) scale(.88); animation-delay: 1.25s; }
 
     .sunflower-head {
       position: absolute;
@@ -164,7 +169,9 @@
       width: 76%;
       aspect-ratio: 1;
       transform: translateX(-50%);
-      animation: spin 18s linear infinite;
+      opacity: 0;
+      scale: .15;
+      animation: assemble-head .7s 1.35s cubic-bezier(.2,1.25,.3,1) forwards, spin 18s 2.1s linear infinite;
     }
 
     .petal {
@@ -179,6 +186,9 @@
       background: linear-gradient(90deg, var(--sunflower-dark), var(--sunflower) 55%, #ffe66b);
       box-shadow: inset 0 -3px 5px rgba(187,112,0,.22), 0 2px 3px rgba(128,77,0,.14);
       transform: rotate(calc(var(--i) * 22.5deg)) translateX(88%);
+      opacity: 0;
+      scale: 0;
+      animation: build-petal .45s var(--delay) cubic-bezier(.2,1.4,.3,1) forwards;
     }
 
     .center {
@@ -195,6 +205,25 @@
       box-shadow: 0 4px 10px rgba(72,39,13,.35), inset 0 0 12px rgba(54,25,5,.4);
     }
 
+    .flower-message {
+      position: absolute;
+      z-index: 6;
+      left: 50%;
+      top: 50%;
+      width: 37%;
+      display: grid;
+      place-items: center;
+      transform: translate(-50%, -50%);
+      font-size: clamp(.39rem, 1.25vw, .68rem);
+      font-weight: 900;
+      line-height: 1.08;
+      text-wrap: balance;
+      color: #fff8cf;
+      text-shadow: 0 1px 2px #3e210e;
+      opacity: 0;
+      animation: show-message .6s 2.45s ease forwards;
+    }
+
     .rose-head {
       position: absolute;
       left: 50%;
@@ -203,7 +232,9 @@
       aspect-ratio: 1;
       transform: translateX(-50%);
       filter: drop-shadow(0 7px 5px rgba(139,86,0,.2));
-      animation: bloom 3s ease-in-out infinite alternate;
+      opacity: 0;
+      scale: .15;
+      animation: assemble-head .7s 1.45s cubic-bezier(.2,1.25,.3,1) forwards, bloom 3s 2.2s ease-in-out infinite alternate;
     }
 
     .rose-petal {
@@ -217,15 +248,30 @@
       transform-origin: 50% 85%;
       background: radial-gradient(circle at 48% 18%, var(--rose-light), var(--rose) 48%, var(--rose-shadow));
       border: 1px solid rgba(218,154,0,.25);
+      opacity: 0;
+      scale: 0;
+      animation: build-petal .55s cubic-bezier(.2,1.4,.3,1) forwards;
     }
 
     .rose-petal:nth-child(1) { transform: translateY(-35%) scale(.75); }
-    .rose-petal:nth-child(2) { transform: rotate(72deg) translateY(-32%) scale(.82); }
-    .rose-petal:nth-child(3) { transform: rotate(144deg) translateY(-32%) scale(.86); }
-    .rose-petal:nth-child(4) { transform: rotate(216deg) translateY(-32%) scale(.86); }
-    .rose-petal:nth-child(5) { transform: rotate(288deg) translateY(-32%) scale(.82); }
-    .rose-petal:nth-child(6) { transform: scale(.56); border-radius: 50% 50% 45% 45%; }
-    .rose-petal:nth-child(7) { transform: rotate(35deg) scale(.34); background: #ffe853; }
+    .rose-petal:nth-child(1) { animation-delay: 1.45s; }
+    .rose-petal:nth-child(2) { transform: rotate(72deg) translateY(-32%) scale(.82); animation-delay: 1.58s; }
+    .rose-petal:nth-child(3) { transform: rotate(144deg) translateY(-32%) scale(.86); animation-delay: 1.71s; }
+    .rose-petal:nth-child(4) { transform: rotate(216deg) translateY(-32%) scale(.86); animation-delay: 1.84s; }
+    .rose-petal:nth-child(5) { transform: rotate(288deg) translateY(-32%) scale(.82); animation-delay: 1.97s; }
+    .rose-petal:nth-child(6) { transform: scale(.56); border-radius: 50% 50% 45% 45%; animation-delay: 2.1s; }
+    .rose-petal:nth-child(7) { transform: rotate(35deg) scale(.34); background: #ffe853; animation-delay: 2.23s; }
+
+    .rose .flower-message {
+      width: 47%;
+      padding: 9% 5%;
+      border-radius: 50%;
+      color: #664014;
+      background: rgba(255, 242, 118, .88);
+      text-shadow: 0 1px 0 #fff;
+      box-shadow: 0 2px 8px rgba(125,76,0,.2);
+      animation-delay: 2.65s;
+    }
 
     .heart {
       position: absolute;
@@ -261,6 +307,31 @@
     @keyframes sway {
       from { transform: rotate(-2.5deg); }
       to { transform: rotate(2.5deg); }
+    }
+
+    @keyframes grow-stem {
+      from { transform: translateX(-50%) scaleY(0); }
+      to { transform: translateX(-50%) scaleY(1); }
+    }
+
+    @keyframes grow-leaf {
+      from { opacity: 0; scale: 0; }
+      to { opacity: 1; scale: 1; }
+    }
+
+    @keyframes assemble-head {
+      from { opacity: 0; scale: .15; }
+      to { opacity: 1; scale: 1; }
+    }
+
+    @keyframes build-petal {
+      from { opacity: 0; scale: 0; }
+      to { opacity: 1; scale: 1; }
+    }
+
+    @keyframes show-message {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     @keyframes spin {
@@ -302,15 +373,16 @@
         <div class="leaf left"></div>
         <div class="leaf right"></div>
         <div class="sunflower-head">
-          <span class="petal" style="--i:0"></span><span class="petal" style="--i:1"></span>
-          <span class="petal" style="--i:2"></span><span class="petal" style="--i:3"></span>
-          <span class="petal" style="--i:4"></span><span class="petal" style="--i:5"></span>
-          <span class="petal" style="--i:6"></span><span class="petal" style="--i:7"></span>
-          <span class="petal" style="--i:8"></span><span class="petal" style="--i:9"></span>
-          <span class="petal" style="--i:10"></span><span class="petal" style="--i:11"></span>
-          <span class="petal" style="--i:12"></span><span class="petal" style="--i:13"></span>
-          <span class="petal" style="--i:14"></span><span class="petal" style="--i:15"></span>
+          <span class="petal" style="--i:0;--delay:1.45s"></span><span class="petal" style="--i:1;--delay:1.51s"></span>
+          <span class="petal" style="--i:2;--delay:1.57s"></span><span class="petal" style="--i:3;--delay:1.63s"></span>
+          <span class="petal" style="--i:4;--delay:1.69s"></span><span class="petal" style="--i:5;--delay:1.75s"></span>
+          <span class="petal" style="--i:6;--delay:1.81s"></span><span class="petal" style="--i:7;--delay:1.87s"></span>
+          <span class="petal" style="--i:8;--delay:1.93s"></span><span class="petal" style="--i:9;--delay:1.99s"></span>
+          <span class="petal" style="--i:10;--delay:2.05s"></span><span class="petal" style="--i:11;--delay:2.11s"></span>
+          <span class="petal" style="--i:12;--delay:2.17s"></span><span class="petal" style="--i:13;--delay:2.23s"></span>
+          <span class="petal" style="--i:14;--delay:2.29s"></span><span class="petal" style="--i:15;--delay:2.35s"></span>
           <span class="center"></span>
+          <span class="flower-message">Eres mi vida entera</span>
         </div>
       </div>
 
@@ -323,6 +395,7 @@
           <span class="rose-petal"></span><span class="rose-petal"></span>
           <span class="rose-petal"></span><span class="rose-petal"></span>
           <span class="rose-petal"></span>
+          <span class="flower-message">Una hermosa flor para mi hermosa flor</span>
         </div>
       </div>
     </section>
