@@ -151,12 +151,14 @@
       position: absolute;
       z-index: 2;
       left: 50%;
-      bottom: 2%;
-      width: 50%;
-      height: 55%;
+      bottom: 1%;
+      width: 68%;
+      height: 51%;
       transform: translateX(-50%);
-      clip-path: polygon(4% 0, 96% 0, 71% 100%, 29% 100%);
-      background: linear-gradient(100deg, rgba(255,145,177,.48), rgba(255,221,185,.7) 48%, rgba(187,71,124,.42)), repeating-linear-gradient(115deg, transparent 0 18px, rgba(255,255,255,.16) 19px 20px);
+      clip-path: polygon(0 0, 100% 0, 67% 100%, 33% 100%);
+      background:
+        linear-gradient(102deg, rgba(207,91,128,.62), rgba(255,221,185,.78) 48%, rgba(174,58,112,.58)),
+        repeating-linear-gradient(115deg, transparent 0 18px, rgba(255,255,255,.18) 19px 20px);
       border-top: 2px solid rgba(255,231,210,.65);
       filter: drop-shadow(0 12px 14px rgba(0,0,0,.5));
       opacity: 0;
@@ -166,11 +168,44 @@
     .bouquet-paper::after {
       content: "";
       position: absolute;
-      left: 22%; right: 22%; bottom: 15%; height: 13px;
+      left: 34%; right: 34%; bottom: 13%; height: 13px;
       border-radius: 50%;
       background: linear-gradient(#f7c345, #a86700);
       box-shadow: 0 4px 10px rgba(0,0,0,.35);
     }
+
+    .bouquet-paper::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(72deg, transparent 49.5%, rgba(109,54,45,.23) 50%, transparent 50.8%), linear-gradient(-72deg, transparent 49.5%, rgba(255,255,255,.2) 50%, transparent 50.8%);
+    }
+
+    .bouquet-knot {
+      position: absolute;
+      z-index: 5;
+      left: 50%;
+      bottom: 7%;
+      width: 72px;
+      height: 25px;
+      opacity: 0;
+      transform: translateX(-50%) scale(.3);
+      animation: tie-bouquet .8s 11.45s cubic-bezier(.2,1.4,.3,1) forwards;
+    }
+
+    .bouquet-knot::before,
+    .bouquet-knot::after {
+      content: "";
+      position: absolute;
+      top: 2px;
+      width: 35px;
+      height: 22px;
+      background: linear-gradient(135deg, #ffe078, #c88600);
+      box-shadow: 0 4px 8px rgba(0,0,0,.4);
+    }
+
+    .bouquet-knot::before { right: 50%; border-radius: 80% 15% 65% 20%; transform: rotate(15deg); }
+    .bouquet-knot::after { left: 50%; border-radius: 15% 80% 20% 65%; transform: rotate(-15deg); }
 
     .flower {
       position: absolute;
@@ -180,8 +215,8 @@
       z-index: 3;
     }
 
-    .sunflower { left: 11%; width: clamp(155px, 31vw, 245px); height: 88%; }
-    .rose { right: 10%; width: clamp(130px, 27vw, 205px); height: 76%; animation-delay: -.9s; }
+    .sunflower { left: 23%; width: clamp(155px, 31vw, 245px); height: 88%; }
+    .rose { right: 21%; width: clamp(150px, 29vw, 220px); height: 78%; animation-delay: -.9s; }
 
     .stem {
       position: absolute;
@@ -526,6 +561,16 @@
       to { opacity: 1; scale: 1; }
     }
 
+    @keyframes tie-bouquet {
+      to { opacity: 1; transform: translateX(-50%) scale(1); }
+    }
+
+    @media (max-width: 520px) {
+      .sunflower { left: 15%; }
+      .rose { right: 13%; }
+      .bouquet-paper { width: 82%; }
+    }
+
     @keyframes spin {
       to { transform: translateX(-50%) rotate(360deg); }
     }
@@ -566,6 +611,7 @@
     <section class="garden" aria-hidden="true">
       <div class="ground"></div>
       <div class="bouquet-paper"></div>
+      <div class="bouquet-knot"></div>
 
       <div class="flower sunflower">
         <div class="stem"></div>
