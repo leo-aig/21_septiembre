@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#fff6c7" />
+  <meta name="theme-color" content="#070904" />
   <meta name="description" content="Un detalle lleno de flores amarillas para mi angelita hermosa." />
   <title>Para mi angelita hermosa</title>
   <style>
     :root {
-      --sky-top: #fff9d8;
-      --sky-bottom: #ffd96a;
+      --sky-top: #101608;
+      --sky-bottom: #020302;
       --sunflower: #ffc928;
       --sunflower-dark: #ed9d00;
       --rose: #ffd62e;
@@ -18,7 +18,7 @@
       --green: #3f8d38;
       --green-dark: #24622d;
       --brown: #70401e;
-      --ink: #5d3a18;
+      --ink: #ffe676;
     }
 
     * { box-sizing: border-box; }
@@ -34,8 +34,9 @@
       color: var(--ink);
       font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
       background:
-        radial-gradient(circle at 15% 18%, rgba(255,255,255,.9) 0 2px, transparent 3px),
-        radial-gradient(circle at 84% 24%, rgba(255,255,255,.75) 0 3px, transparent 4px),
+        radial-gradient(circle at 50% 58%, rgba(105,126,28,.18), transparent 44%),
+        radial-gradient(circle at 15% 18%, rgba(255,225,72,.8) 0 1px, transparent 3px),
+        radial-gradient(circle at 84% 24%, rgba(255,240,135,.65) 0 2px, transparent 4px),
         linear-gradient(180deg, var(--sky-top), var(--sky-bottom));
     }
 
@@ -44,9 +45,9 @@
       position: fixed;
       inset: 0;
       pointer-events: none;
-      opacity: .2;
-      background-image: radial-gradient(#cf8800 0.7px, transparent 0.7px);
-      background-size: 18px 18px;
+      opacity: .32;
+      background-image: radial-gradient(#ffda3c 0.8px, transparent 1px);
+      background-size: 35px 35px;
     }
 
     body::after {
@@ -55,10 +56,9 @@
       inset: 0;
       pointer-events: none;
       background:
-        radial-gradient(circle at 8% 14%, rgba(255,214,46,.42) 0 38px, transparent 39px),
-        radial-gradient(circle at 92% 17%, rgba(255,255,255,.65) 0 54px, transparent 55px),
-        radial-gradient(circle at 82% 83%, rgba(238,169,0,.18) 0 70px, transparent 71px),
-        radial-gradient(circle at 14% 78%, rgba(255,255,255,.42) 0 48px, transparent 49px);
+        radial-gradient(circle at 8% 14%, rgba(255,214,46,.1) 0 38px, transparent 39px),
+        radial-gradient(circle at 92% 17%, rgba(255,223,79,.08) 0 54px, transparent 55px),
+        radial-gradient(circle at 82% 83%, rgba(111,144,35,.12) 0 70px, transparent 71px);
     }
 
     .card {
@@ -68,11 +68,11 @@
       padding: clamp(24px, 5vw, 48px) clamp(18px, 5vw, 48px) 24px;
       overflow: hidden;
       text-align: center;
-      border: 1px solid rgba(255,255,255,.8);
+      border: 1px solid rgba(255,222,91,.18);
       border-radius: 34px;
-      background: rgba(255, 255, 255, .55);
-      box-shadow: 0 24px 70px rgba(116, 74, 0, .22), inset 0 1px 0 #fff;
-      backdrop-filter: blur(9px);
+      background: linear-gradient(180deg, rgba(11,16,7,.8), rgba(2,4,2,.94));
+      box-shadow: 0 30px 90px rgba(0,0,0,.72), inset 0 1px 0 rgba(255,232,134,.12);
+      backdrop-filter: blur(12px);
       animation: appear 1s cubic-bezier(.2,.9,.2,1) both;
     }
 
@@ -90,13 +90,13 @@
       z-index: 4;
       max-width: 630px;
       margin: 0 auto;
-      font-family: Georgia, "Times New Roman", serif;
+      font-family: "Segoe Script", "Brush Script MT", Georgia, serif;
       font-size: clamp(2rem, 6.8vw, 4.1rem);
       line-height: .98;
       letter-spacing: -.04em;
       text-wrap: balance;
-      color: #704018;
-      text-shadow: 0 2px 0 rgba(255,255,255,.8);
+      color: #ffe03b;
+      text-shadow: 0 0 12px rgba(255,207,0,.3), 0 3px 12px #000;
     }
 
     .subtitle {
@@ -106,7 +106,7 @@
       max-width: 470px;
       font-size: clamp(.9rem, 2.7vw, 1.08rem);
       line-height: 1.5;
-      color: #87591e;
+      color: #f8eab0;
     }
 
     .background-decor {
@@ -142,8 +142,34 @@
       inset: auto -10% -17% -10%;
       height: 42%;
       border-radius: 50% 50% 0 0;
-      background: linear-gradient(180deg, #7dbb48, #438336);
-      box-shadow: inset 0 10px 20px rgba(255,255,255,.18);
+      background: radial-gradient(ellipse at 50% 0, rgba(73,112,36,.55), transparent 64%), linear-gradient(180deg, rgba(20,49,19,.72), #020602);
+      box-shadow: inset 0 10px 30px rgba(119,164,58,.12);
+      z-index: 1;
+    }
+
+    .bouquet-paper {
+      position: absolute;
+      z-index: 2;
+      left: 50%;
+      bottom: 2%;
+      width: 50%;
+      height: 55%;
+      transform: translateX(-50%);
+      clip-path: polygon(4% 0, 96% 0, 71% 100%, 29% 100%);
+      background: linear-gradient(100deg, rgba(255,145,177,.48), rgba(255,221,185,.7) 48%, rgba(187,71,124,.42)), repeating-linear-gradient(115deg, transparent 0 18px, rgba(255,255,255,.16) 19px 20px);
+      border-top: 2px solid rgba(255,231,210,.65);
+      filter: drop-shadow(0 12px 14px rgba(0,0,0,.5));
+      opacity: 0;
+      animation: unwrap 1.4s 10.4s ease forwards;
+    }
+
+    .bouquet-paper::after {
+      content: "";
+      position: absolute;
+      left: 22%; right: 22%; bottom: 15%; height: 13px;
+      border-radius: 50%;
+      background: linear-gradient(#f7c345, #a86700);
+      box-shadow: 0 4px 10px rgba(0,0,0,.35);
     }
 
     .flower {
@@ -151,6 +177,7 @@
       bottom: 13%;
       transform-origin: 50% 100%;
       animation: sway 3.8s ease-in-out infinite alternate;
+      z-index: 3;
     }
 
     .sunflower { left: 11%; width: clamp(155px, 31vw, 245px); height: 88%; }
@@ -164,7 +191,7 @@
       height: 65%;
       transform: translateX(-50%);
       border-radius: 10px;
-      background: linear-gradient(90deg, var(--green-dark), #62a842 55%, var(--green-dark));
+      background: linear-gradient(90deg, #102e16, #66994a 48%, #183c1b 78%, #081d0d);
       box-shadow: 3px 0 4px rgba(45,85,31,.2);
       transform-origin: 50% 100%;
       animation: grow-stem 1.8s .35s cubic-bezier(.2,.8,.2,1) both;
@@ -175,8 +202,8 @@
       width: 64px;
       height: 31px;
       border-radius: 90% 5% 90% 5%;
-      background: linear-gradient(135deg, #70b84a, var(--green-dark));
-      box-shadow: inset 0 2px 4px rgba(255,255,255,.25);
+      background: linear-gradient(135deg, #719d4e, #234f27 55%, #0b2816);
+      box-shadow: inset 0 2px 5px rgba(255,255,255,.18), 0 4px 6px rgba(0,0,0,.35);
       opacity: 0;
       scale: 0;
       animation: grow-leaf .9s 1.55s cubic-bezier(.2,1.4,.3,1) forwards;
@@ -209,7 +236,8 @@
       transform: translateX(-50%);
       opacity: 0;
       scale: .15;
-      animation: assemble-head .9s 2.25s cubic-bezier(.2,1.25,.3,1) forwards, spin 24s 4.75s linear infinite;
+      filter: drop-shadow(0 10px 12px rgba(0,0,0,.5));
+      animation: assemble-head .9s 2.25s cubic-bezier(.2,1.25,.3,1) forwards, sunflower-breathe 4.5s 4.75s ease-in-out infinite alternate;
     }
 
     .petal {
@@ -221,12 +249,21 @@
       margin-left: -17%;
       margin-top: -7.5%;
       border-radius: 100% 15% 100% 15%;
-      background: linear-gradient(90deg, var(--sunflower-dark), var(--sunflower) 55%, #ffe66b);
-      box-shadow: inset 0 -3px 5px rgba(187,112,0,.22), 0 2px 3px rgba(128,77,0,.14);
+      background: linear-gradient(90deg, #b76c00, #ffbd08 32%, #ffe34f 68%, #fff19a);
+      box-shadow: inset 0 -4px 6px rgba(147,79,0,.3), inset 0 2px 3px rgba(255,255,255,.35), 0 3px 5px rgba(0,0,0,.22);
       transform: rotate(calc(var(--i) * 22.5deg)) translateX(88%);
       opacity: 0;
       scale: 0;
       animation: build-petal .7s var(--delay) cubic-bezier(.2,1.4,.3,1) forwards;
+    }
+
+    .petal.inner {
+      width: 30%;
+      height: 11%;
+      margin-left: -15%;
+      margin-top: -5.5%;
+      transform: rotate(calc(var(--i) * 22.5deg + 11.25deg)) translateX(72%);
+      filter: brightness(.88);
     }
 
     .center {
@@ -237,10 +274,10 @@
       place-items: center;
       border-radius: 50%;
       background:
-        radial-gradient(circle, #e8ad43 0 2px, transparent 2.4px) 0 0 / 9px 9px,
-        radial-gradient(circle at 38% 35%, #996026, var(--brown) 66%, #4e2916);
-      border: 5px solid #c78622;
-      box-shadow: 0 4px 10px rgba(72,39,13,.35), inset 0 0 12px rgba(54,25,5,.4);
+        radial-gradient(circle, #c18424 0 1.5px, transparent 2px) 0 0 / 6px 6px,
+        radial-gradient(circle at 38% 35%, #644018, #211107 68%, #080402);
+      border: 4px solid #9b641b;
+      box-shadow: 0 5px 14px rgba(0,0,0,.65), inset 0 0 16px #090300;
     }
 
     .flower-message {
@@ -284,7 +321,7 @@
       margin: -25% 0 0 -26%;
       border-radius: 55% 55% 45% 45%;
       transform-origin: 50% 85%;
-      background: radial-gradient(circle at 48% 18%, var(--rose-light), var(--rose) 48%, var(--rose-shadow));
+      background: radial-gradient(ellipse at 45% 15%, #fff6a3, #ffd51f 42%, #dc8d00 76%, #8f5100);
       border: 1px solid rgba(218,154,0,.25);
       opacity: 0;
       scale: 0;
@@ -368,6 +405,16 @@
       to { opacity: .9; transform: translateY(-8px) rotate(8deg) scale(1.12); }
     }
 
+    @keyframes sunflower-breathe {
+      from { transform: translateX(-50%) rotate(-1.5deg) scale(.98); }
+      to { transform: translateX(-50%) rotate(1.5deg) scale(1.02); }
+    }
+
+    @keyframes unwrap {
+      from { opacity: 0; transform: translateX(-50%) translateY(35px) scale(.85); }
+      to { opacity: .92; transform: translateX(-50%) translateY(0) scale(1); }
+    }
+
     @keyframes spin {
       to { transform: translateX(-50%) rotate(360deg); }
     }
@@ -407,6 +454,7 @@
 
     <section class="garden" aria-hidden="true">
       <div class="ground"></div>
+      <div class="bouquet-paper"></div>
 
       <div class="flower sunflower">
         <div class="stem"></div>
@@ -421,6 +469,14 @@
           <span class="petal" style="--i:10;--delay:3.55s"></span><span class="petal" style="--i:11;--delay:3.67s"></span>
           <span class="petal" style="--i:12;--delay:3.79s"></span><span class="petal" style="--i:13;--delay:3.91s"></span>
           <span class="petal" style="--i:14;--delay:4.03s"></span><span class="petal" style="--i:15;--delay:4.15s"></span>
+          <span class="petal inner" style="--i:0;--delay:2.42s"></span><span class="petal inner" style="--i:1;--delay:2.54s"></span>
+          <span class="petal inner" style="--i:2;--delay:2.66s"></span><span class="petal inner" style="--i:3;--delay:2.78s"></span>
+          <span class="petal inner" style="--i:4;--delay:2.9s"></span><span class="petal inner" style="--i:5;--delay:3.02s"></span>
+          <span class="petal inner" style="--i:6;--delay:3.14s"></span><span class="petal inner" style="--i:7;--delay:3.26s"></span>
+          <span class="petal inner" style="--i:8;--delay:3.38s"></span><span class="petal inner" style="--i:9;--delay:3.5s"></span>
+          <span class="petal inner" style="--i:10;--delay:3.62s"></span><span class="petal inner" style="--i:11;--delay:3.74s"></span>
+          <span class="petal inner" style="--i:12;--delay:3.86s"></span><span class="petal inner" style="--i:13;--delay:3.98s"></span>
+          <span class="petal inner" style="--i:14;--delay:4.1s"></span><span class="petal inner" style="--i:15;--delay:4.22s"></span>
           <span class="center"></span>
           <span class="flower-message">Eres mi vida entera</span>
         </div>
