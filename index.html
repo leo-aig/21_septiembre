@@ -162,7 +162,7 @@
       border-top: 2px solid rgba(255,231,210,.65);
       filter: drop-shadow(0 12px 14px rgba(0,0,0,.5));
       opacity: 0;
-      animation: unwrap 1.4s 10.4s ease forwards;
+      animation: unwrap 1.4s 12.25s ease forwards;
     }
 
     .bouquet-paper::after {
@@ -190,7 +190,7 @@
       height: 25px;
       opacity: 0;
       transform: translateX(-50%) scale(.3);
-      animation: tie-bouquet .8s 11.45s cubic-bezier(.2,1.4,.3,1) forwards;
+      animation: tie-bouquet .8s 13.3s cubic-bezier(.2,1.4,.3,1) forwards;
     }
 
     .bouquet-knot::before,
@@ -215,8 +215,19 @@
       z-index: 3;
     }
 
-    .sunflower { left: 23%; width: clamp(155px, 31vw, 245px); height: 88%; }
-    .rose { right: 21%; width: clamp(150px, 29vw, 220px); height: 78%; animation-delay: -.9s; }
+    .sunflower {
+      left: 13%;
+      width: clamp(155px, 31vw, 245px);
+      height: 88%;
+      animation: sway 3.8s ease-in-out infinite alternate, gather-sunflower 1.6s 10.7s cubic-bezier(.2,.85,.25,1) forwards;
+    }
+
+    .rose {
+      right: 11%;
+      width: clamp(150px, 29vw, 220px);
+      height: 78%;
+      animation: sway 3.8s -.9s ease-in-out infinite alternate, gather-roses 1.6s 10.7s cubic-bezier(.2,.85,.25,1) forwards;
+    }
 
     .stem {
       position: absolute;
@@ -272,7 +283,7 @@
       opacity: 0;
       scale: .15;
       filter: drop-shadow(0 10px 12px rgba(0,0,0,.5));
-      animation: assemble-head .9s 2.25s cubic-bezier(.2,1.25,.3,1) forwards, sunflower-breathe 4.5s 4.75s ease-in-out infinite alternate;
+      animation: assemble-head .9s 2.25s cubic-bezier(.2,1.25,.3,1) forwards, spin 30s 4.75s linear infinite;
     }
 
     .petal {
@@ -542,6 +553,16 @@
       to { transform: translateX(-50%) rotate(1.5deg) scale(1.02); }
     }
 
+    @keyframes gather-sunflower {
+      from { transform: translateX(0) rotate(0) scale(1); }
+      to { transform: translateX(64px) rotate(-3deg) scale(.94); }
+    }
+
+    @keyframes gather-roses {
+      from { transform: translateX(0) rotate(0) scale(1); }
+      to { transform: translateX(-58px) rotate(3deg) scale(.96); }
+    }
+
     @keyframes unwrap {
       from { opacity: 0; transform: translateX(-50%) translateY(35px) scale(.85); }
       to { opacity: .92; transform: translateX(-50%) translateY(0) scale(1); }
@@ -566,9 +587,19 @@
     }
 
     @media (max-width: 520px) {
-      .sunflower { left: 15%; }
-      .rose { right: 13%; }
+      .sunflower { left: 5%; }
+      .rose { right: 4%; }
       .bouquet-paper { width: 82%; }
+
+      @keyframes gather-sunflower {
+        from { transform: translateX(0) rotate(0) scale(1); }
+        to { transform: translateX(42px) rotate(-3deg) scale(.92); }
+      }
+
+      @keyframes gather-roses {
+        from { transform: translateX(0) rotate(0) scale(1); }
+        to { transform: translateX(-38px) rotate(3deg) scale(.94); }
+      }
     }
 
     @keyframes spin {
