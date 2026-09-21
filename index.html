@@ -49,6 +49,18 @@
       background-size: 18px 18px;
     }
 
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 8% 14%, rgba(255,214,46,.42) 0 38px, transparent 39px),
+        radial-gradient(circle at 92% 17%, rgba(255,255,255,.65) 0 54px, transparent 55px),
+        radial-gradient(circle at 82% 83%, rgba(238,169,0,.18) 0 70px, transparent 71px),
+        radial-gradient(circle at 14% 78%, rgba(255,255,255,.42) 0 48px, transparent 49px);
+    }
+
     .card {
       position: relative;
       width: min(92vw, 760px);
@@ -97,6 +109,28 @@
       color: #87591e;
     }
 
+    .background-decor {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .decor {
+      position: absolute;
+      color: rgba(218, 145, 0, .42);
+      text-shadow: 0 2px 8px rgba(255,255,255,.75);
+      animation: twinkle 3s ease-in-out infinite alternate;
+    }
+
+    .decor:nth-child(1) { left: 5%; top: 17%; font-size: 1.7rem; animation-delay: -.5s; }
+    .decor:nth-child(2) { right: 6%; top: 13%; font-size: 2rem; animation-delay: -1.4s; }
+    .decor:nth-child(3) { left: 8%; top: 43%; font-size: 1.2rem; animation-delay: -2.1s; }
+    .decor:nth-child(4) { right: 8%; top: 39%; font-size: 1.45rem; animation-delay: -.9s; }
+    .decor:nth-child(5) { left: 41%; top: 32%; font-size: 1rem; animation-delay: -1.8s; }
+    .decor:nth-child(6) { right: 24%; top: 28%; font-size: 1rem; animation-delay: -.2s; }
+
     .garden {
       position: absolute;
       inset: auto 0 0;
@@ -133,7 +167,7 @@
       background: linear-gradient(90deg, var(--green-dark), #62a842 55%, var(--green-dark));
       box-shadow: 3px 0 4px rgba(45,85,31,.2);
       transform-origin: 50% 100%;
-      animation: grow-stem 1.25s .2s cubic-bezier(.2,.8,.2,1) both;
+      animation: grow-stem 1.8s .35s cubic-bezier(.2,.8,.2,1) both;
     }
 
     .leaf {
@@ -145,7 +179,7 @@
       box-shadow: inset 0 2px 4px rgba(255,255,255,.25);
       opacity: 0;
       scale: 0;
-      animation: grow-leaf .65s 1s cubic-bezier(.2,1.4,.3,1) forwards;
+      animation: grow-leaf .9s 1.55s cubic-bezier(.2,1.4,.3,1) forwards;
     }
 
     .leaf::after {
@@ -160,7 +194,11 @@
     }
 
     .leaf.left { left: 49%; bottom: 24%; transform: translateX(-100%) rotate(12deg); }
-    .leaf.right { left: 52%; bottom: 39%; transform: rotate(76deg) scale(.88); animation-delay: 1.25s; }
+    .leaf.right { left: 52%; bottom: 39%; transform: rotate(76deg) scale(.88); animation-delay: 1.95s; }
+
+    .rose .stem { animation-delay: 5.2s; }
+    .rose .leaf.left { animation-delay: 6.55s; }
+    .rose .leaf.right { animation-delay: 6.95s; }
 
     .sunflower-head {
       position: absolute;
@@ -171,7 +209,7 @@
       transform: translateX(-50%);
       opacity: 0;
       scale: .15;
-      animation: assemble-head .7s 1.35s cubic-bezier(.2,1.25,.3,1) forwards, spin 18s 2.1s linear infinite;
+      animation: assemble-head .9s 2.25s cubic-bezier(.2,1.25,.3,1) forwards, spin 24s 4.75s linear infinite;
     }
 
     .petal {
@@ -188,7 +226,7 @@
       transform: rotate(calc(var(--i) * 22.5deg)) translateX(88%);
       opacity: 0;
       scale: 0;
-      animation: build-petal .45s var(--delay) cubic-bezier(.2,1.4,.3,1) forwards;
+      animation: build-petal .7s var(--delay) cubic-bezier(.2,1.4,.3,1) forwards;
     }
 
     .center {
@@ -221,7 +259,7 @@
       color: #fff8cf;
       text-shadow: 0 1px 2px #3e210e;
       opacity: 0;
-      animation: show-message .6s 2.45s ease forwards;
+      animation: show-message .8s 4.65s ease forwards;
     }
 
     .rose-head {
@@ -234,43 +272,48 @@
       filter: drop-shadow(0 7px 5px rgba(139,86,0,.2));
       opacity: 0;
       scale: .15;
-      animation: assemble-head .7s 1.45s cubic-bezier(.2,1.25,.3,1) forwards, bloom 3s 2.2s ease-in-out infinite alternate;
+      animation: assemble-head 1s 7.45s cubic-bezier(.2,1.25,.3,1) forwards, bloom 4s 11.2s ease-in-out infinite alternate;
     }
 
     .rose-petal {
       position: absolute;
       left: 50%;
       top: 50%;
-      width: 56%;
-      height: 46%;
-      margin: -23% 0 0 -28%;
+      width: 52%;
+      height: 50%;
+      margin: -25% 0 0 -26%;
       border-radius: 55% 55% 45% 45%;
       transform-origin: 50% 85%;
       background: radial-gradient(circle at 48% 18%, var(--rose-light), var(--rose) 48%, var(--rose-shadow));
       border: 1px solid rgba(218,154,0,.25);
       opacity: 0;
       scale: 0;
-      animation: build-petal .55s cubic-bezier(.2,1.4,.3,1) forwards;
+      animation: build-petal .85s var(--delay) cubic-bezier(.2,1.4,.3,1) forwards;
     }
 
-    .rose-petal:nth-child(1) { transform: translateY(-35%) scale(.75); }
-    .rose-petal:nth-child(1) { animation-delay: 1.45s; }
-    .rose-petal:nth-child(2) { transform: rotate(72deg) translateY(-32%) scale(.82); animation-delay: 1.58s; }
-    .rose-petal:nth-child(3) { transform: rotate(144deg) translateY(-32%) scale(.86); animation-delay: 1.71s; }
-    .rose-petal:nth-child(4) { transform: rotate(216deg) translateY(-32%) scale(.86); animation-delay: 1.84s; }
-    .rose-petal:nth-child(5) { transform: rotate(288deg) translateY(-32%) scale(.82); animation-delay: 1.97s; }
-    .rose-petal:nth-child(6) { transform: scale(.56); border-radius: 50% 50% 45% 45%; animation-delay: 2.1s; }
-    .rose-petal:nth-child(7) { transform: rotate(35deg) scale(.34); background: #ffe853; animation-delay: 2.23s; }
+    .rose-petal:nth-child(1) { transform: rotate(0deg) translateY(-48%) scale(.94); }
+    .rose-petal:nth-child(2) { transform: rotate(45deg) translateY(-48%) scale(.94); }
+    .rose-petal:nth-child(3) { transform: rotate(90deg) translateY(-48%) scale(.94); }
+    .rose-petal:nth-child(4) { transform: rotate(135deg) translateY(-48%) scale(.94); }
+    .rose-petal:nth-child(5) { transform: rotate(180deg) translateY(-48%) scale(.94); }
+    .rose-petal:nth-child(6) { transform: rotate(225deg) translateY(-48%) scale(.94); }
+    .rose-petal:nth-child(7) { transform: rotate(270deg) translateY(-48%) scale(.94); }
+    .rose-petal:nth-child(8) { transform: rotate(315deg) translateY(-48%) scale(.94); }
+    .rose-petal:nth-child(9) { transform: rotate(22deg) translateY(-20%) scale(.7); }
+    .rose-petal:nth-child(10) { transform: rotate(112deg) translateY(-20%) scale(.7); }
+    .rose-petal:nth-child(11) { transform: rotate(202deg) translateY(-20%) scale(.7); }
+    .rose-petal:nth-child(12) { transform: rotate(292deg) translateY(-20%) scale(.7); }
 
     .rose .flower-message {
-      width: 47%;
-      padding: 9% 5%;
+      width: 44%;
+      min-height: 44%;
+      padding: 7% 4%;
       border-radius: 50%;
       color: #664014;
       background: rgba(255, 242, 118, .88);
       text-shadow: 0 1px 0 #fff;
       box-shadow: 0 2px 8px rgba(125,76,0,.2);
-      animation-delay: 2.65s;
+      animation-delay: 11.15s;
     }
 
     .heart {
@@ -283,20 +326,6 @@
       animation: float-up var(--speed) ease-in infinite;
       animation-delay: var(--delay);
       filter: drop-shadow(0 2px 2px rgba(255,255,255,.8));
-    }
-
-    .signature {
-      position: absolute;
-      z-index: 7;
-      left: 50%;
-      bottom: 15px;
-      margin: 0;
-      transform: translateX(-50%);
-      white-space: nowrap;
-      font-family: Georgia, serif;
-      font-size: clamp(.72rem, 2.2vw, .9rem);
-      color: rgba(255,255,255,.92);
-      text-shadow: 0 1px 3px #3d6d29;
     }
 
     @keyframes appear {
@@ -334,6 +363,11 @@
       to { opacity: 1; }
     }
 
+    @keyframes twinkle {
+      from { opacity: .35; transform: translateY(0) rotate(-8deg) scale(.9); }
+      to { opacity: .9; transform: translateY(-8px) rotate(8deg) scale(1.12); }
+    }
+
     @keyframes spin {
       to { transform: translateX(-50%) rotate(360deg); }
     }
@@ -365,6 +399,12 @@
     <h1>Mi angelita hermosa,<br />te amo mucho</h1>
     <p class="subtitle">Eres lo mejor que me pasó en esta vida. 💛</p>
 
+    <div class="background-decor" aria-hidden="true">
+      <span class="decor">✦</span><span class="decor">♥</span>
+      <span class="decor">🌼</span><span class="decor">✦</span>
+      <span class="decor">♥</span><span class="decor">✧</span>
+    </div>
+
     <section class="garden" aria-hidden="true">
       <div class="ground"></div>
 
@@ -373,14 +413,14 @@
         <div class="leaf left"></div>
         <div class="leaf right"></div>
         <div class="sunflower-head">
-          <span class="petal" style="--i:0;--delay:1.45s"></span><span class="petal" style="--i:1;--delay:1.51s"></span>
-          <span class="petal" style="--i:2;--delay:1.57s"></span><span class="petal" style="--i:3;--delay:1.63s"></span>
-          <span class="petal" style="--i:4;--delay:1.69s"></span><span class="petal" style="--i:5;--delay:1.75s"></span>
-          <span class="petal" style="--i:6;--delay:1.81s"></span><span class="petal" style="--i:7;--delay:1.87s"></span>
-          <span class="petal" style="--i:8;--delay:1.93s"></span><span class="petal" style="--i:9;--delay:1.99s"></span>
-          <span class="petal" style="--i:10;--delay:2.05s"></span><span class="petal" style="--i:11;--delay:2.11s"></span>
-          <span class="petal" style="--i:12;--delay:2.17s"></span><span class="petal" style="--i:13;--delay:2.23s"></span>
-          <span class="petal" style="--i:14;--delay:2.29s"></span><span class="petal" style="--i:15;--delay:2.35s"></span>
+          <span class="petal" style="--i:0;--delay:2.35s"></span><span class="petal" style="--i:1;--delay:2.47s"></span>
+          <span class="petal" style="--i:2;--delay:2.59s"></span><span class="petal" style="--i:3;--delay:2.71s"></span>
+          <span class="petal" style="--i:4;--delay:2.83s"></span><span class="petal" style="--i:5;--delay:2.95s"></span>
+          <span class="petal" style="--i:6;--delay:3.07s"></span><span class="petal" style="--i:7;--delay:3.19s"></span>
+          <span class="petal" style="--i:8;--delay:3.31s"></span><span class="petal" style="--i:9;--delay:3.43s"></span>
+          <span class="petal" style="--i:10;--delay:3.55s"></span><span class="petal" style="--i:11;--delay:3.67s"></span>
+          <span class="petal" style="--i:12;--delay:3.79s"></span><span class="petal" style="--i:13;--delay:3.91s"></span>
+          <span class="petal" style="--i:14;--delay:4.03s"></span><span class="petal" style="--i:15;--delay:4.15s"></span>
           <span class="center"></span>
           <span class="flower-message">Eres mi vida entera</span>
         </div>
@@ -391,10 +431,12 @@
         <div class="leaf left"></div>
         <div class="leaf right"></div>
         <div class="rose-head">
-          <span class="rose-petal"></span><span class="rose-petal"></span>
-          <span class="rose-petal"></span><span class="rose-petal"></span>
-          <span class="rose-petal"></span><span class="rose-petal"></span>
-          <span class="rose-petal"></span>
+          <span class="rose-petal" style="--delay:7.55s"></span><span class="rose-petal" style="--delay:7.78s"></span>
+          <span class="rose-petal" style="--delay:8.01s"></span><span class="rose-petal" style="--delay:8.24s"></span>
+          <span class="rose-petal" style="--delay:8.47s"></span><span class="rose-petal" style="--delay:8.7s"></span>
+          <span class="rose-petal" style="--delay:8.93s"></span><span class="rose-petal" style="--delay:9.16s"></span>
+          <span class="rose-petal" style="--delay:9.39s"></span><span class="rose-petal" style="--delay:9.62s"></span>
+          <span class="rose-petal" style="--delay:9.85s"></span><span class="rose-petal" style="--delay:10.08s"></span>
           <span class="flower-message">Una hermosa flor para mi hermosa flor</span>
         </div>
       </div>
@@ -405,7 +447,6 @@
     <span class="heart" style="left:53%;--speed:8s;--delay:-3s">♥</span>
     <span class="heart" style="left:74%;--speed:10s;--delay:-7s">♥</span>
     <span class="heart" style="left:91%;--speed:7.5s;--delay:-4s">♥</span>
-    <p class="signature">Hecho con todo mi amor para ti ✨</p>
   </main>
 </body>
 </html>
